@@ -8,7 +8,7 @@ from pushbullet import PushBullet
 kingsReward = False
 baseTime = 900 
 pb_access_token = "o.rog2UWVKIxOH6GDZXDHAOvfuuWzsGo0f"
-pb = PushBullet(access_token)
+pb = PushBullet(pb_access_token)
 
 def mhDebug(s):
     now = str(datetime.now())
@@ -54,10 +54,10 @@ def soundHorn():
     if "You must claim your King's Reward before continuing the hunt" in response.text:
         mhlog("Kings Reward Appeared")
         this.kingsReward = True
-        pb.push_note("Kings Reward Appeared", "Kings Reward Appeared")
+        pb.push_note("Kings Reward Appeared", "")
     else:
         mhlog("Sounded the horn")
-        pb.push_note("Sounded the horn", "Sounded the horn")
+        pb.push_note("Sounded the horn", "")
 
 
 def checkIfKingsRewardSolved():
@@ -97,9 +97,9 @@ def checkIfKingsRewardSolved():
     if "You must claim your King's Reward before continuing the hunt" not in response.text:
         this.kingsReward = False
         mhlog("Kings Reward not yet solved")
-        pb.push_note("Kings Reward not yet solved", "Kings Reward not yet solved")
+        pb.push_note("Kings Reward not yet solved", "")
     else :
-        pb.push_note("Kings Reward Solved", "Kings Reward Solved")
+        pb.push_note("Kings Reward Solved", "")
         mhlog("Kings Reward Solved")
 
 while True:
