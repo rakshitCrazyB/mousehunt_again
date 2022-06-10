@@ -59,7 +59,6 @@ def soundHorn():
         mhlog("Sounded the horn")
         pb.push_note("Sounded the horn", "")
 
-
 def checkIfKingsRewardSolved():
     mhlog("Checking if kings reward solved")
     cookies = {
@@ -103,10 +102,13 @@ def checkIfKingsRewardSolved():
         mhlog("Kings Reward Solved")
 
 while True:
-    if kingsReward :
-        checkIfKingsRewardSolved()
-    
-    if not kingsReward:
-        soundHorn()
-
+    try:
+        if kingsReward :
+            checkIfKingsRewardSolved()
+        
+        if not kingsReward:
+            soundHorn()
+    except:
+        mhlog("Something went wrong")
+        mhlog(traceback.format_exc())
     time.sleep(baseTime + random.randint(10, 20))
