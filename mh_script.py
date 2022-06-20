@@ -1,3 +1,5 @@
+## nohup python mh_script.py >> out &
+
 import requests
 import time
 import random
@@ -55,7 +57,7 @@ def soundHorn():
     mhDebug(response.text)
     if "You must claim your King's Reward before continuing the hunt" in response.text:
         mhlog("Kings Reward Appeared")
-        this.kingsReward = True
+        kingsReward = True
         pb.push_note("Kings Reward Appeared", "")
     else:
         mhlog("Sounded the horn")
@@ -96,12 +98,13 @@ def checkIfKingsRewardSolved():
     mhDebug(response.text)
 
     if "You must claim your King's Reward before continuing the hunt" not in response.text:
-        this.kingsReward = False
+        kingsReward = False
         mhlog("Kings Reward not yet solved")
         pb.push_note("Kings Reward not yet solved", "")
     else :
         pb.push_note("Kings Reward Solved", "")
         mhlog("Kings Reward Solved")
+
 
 while True:
     try:
