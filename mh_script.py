@@ -4,6 +4,8 @@ import random
 from datetime import datetime
 import sys
 from pushbullet import PushBullet
+import traceback
+
 
 kingsReward = False
 baseTime = 900 
